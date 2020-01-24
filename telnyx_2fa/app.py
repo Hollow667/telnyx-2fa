@@ -184,7 +184,7 @@ def main():
     webhooks = app['webhook-handler'] = WebhookHandler()
     requests = app['request-handler'] = RequestHandler()
 
-    app.router.add_route('POST', '/health', health)
+    app.router.add_route('GET', '/health', health)
     app.router.add_route('POST', '/event',
                          webhooks.handle_event, name='event')
     app.router.add_route('GET', '/2fa',
