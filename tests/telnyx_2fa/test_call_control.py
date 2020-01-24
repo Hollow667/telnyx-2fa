@@ -90,6 +90,8 @@ async def test_call_answered(token, customer_input, status, expected):
     f = asyncio.Future()
     f.set_result((customer_input, status))
     leg.wait_gather_using_speak = CoroutineMock(return_value=f)
+    leg.wait_speak = CoroutineMock()
+    leg.hangup = CoroutineMock()
     sess = TwoFactorAuthCC(token, 'ABC')
     await sess.on_call_answered(None, leg)
     result = await sess.result
