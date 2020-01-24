@@ -29,7 +29,7 @@ docker_build_args = \
 all: build
 
 test: build
-	docker run -it --entrypoint ./run-tests.sh telnyx-2fa
+	docker run --entrypoint ./run-tests.sh telnyx-2fa
 
 build:
 	docker build $(docker_build_args) -t $(main_image) .
