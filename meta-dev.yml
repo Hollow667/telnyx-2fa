@@ -1,0 +1,42 @@
+names:
+
+  service  : telnyx-2fa
+  github   : telnyx-2fa
+  upsource : null
+  bugsnag  : null
+
+project:
+
+  squad                  : messaging.squad
+  primary_maintainer     : michaelm
+  secondary_maintainer   :
+  public_api             : false
+  private_api            : true
+  dependencies           :
+    - telnyx-public-api
+
+deploy:
+
+  sites:
+    - ch1
+  cpu           : 1024
+  memory        : 256
+  k8s_clusters  : ["backend-ch1-dev", "backend-dc2-dev"]
+  instances     : 1
+  service       :
+    - name      : telnyx-2fa
+      port      : 8080
+      tags      : ["messaging", "2fa"]
+
+  env:
+    static:
+      INSTANCE_NUMBER                        : 2
+
+      API_KEY                                : 4cec8be3-68e6-41f3-a0b0-c6d31f0faf9a
+      TELNYX_API_KEY                         : 9961a349281880eec6e89a950a5f75a2e331826b99c60764a5325d856ca98909
+      TELNYX_CONNECTION_ID                   : 1291323136150602754
+      VOICE_ANI                              : +17733372409
+      SMS_ANI                                : +17733372409
+      BASE_URL                               : https://telnyx-2fa.query.consul:8080
+      SMS_TOKEN_DIGITS                       : 6
+      VOICE_TOKEN_DIGITS                     : 2
