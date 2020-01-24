@@ -2,7 +2,7 @@
 // This is all that is required to deploy your service to Nomad
 @Library("github.com/team-telnyx/tlnx-ci-lib") _
 kubernetesPython {
-    service      = "messaging-activation"
+    service      = "telnyx-2fa"
     hostGroup    = "dev_k8s_no_hosts"
 }
 
@@ -11,7 +11,7 @@ kubernetesPython {
 
 // @Library("github.com/team-telnyx/tlnx-ci-lib") _
 // makeNomad {
-//    service      = "messaging-activation"
+//    service      = "telnyx-2fa"
 //    site         = "dc2"
 //    // hostGroup is the tanker group you normally deploy to in dev
 //    hostGroup    = "dev_v2backend_tankers"
@@ -23,7 +23,7 @@ kubernetesPython {
 //     agent any
 
 //     environment {
-//         SERVICE_NAME = 'messaging-activation'
+//         SERVICE_NAME = 'telnyx-2fa'
 //         TARGET_HOSTS = 'dev_messaging'
 //         SLACK_CHANNEL = 'squad-messaging-jenk'
 //         BLAMEES = sh(script: "bin/jenkins-slack-blame ${env.BUILD_URL}", returnStdout: true).trim()
