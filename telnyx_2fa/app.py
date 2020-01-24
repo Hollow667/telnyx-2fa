@@ -174,12 +174,17 @@ class RequestHandler:
         return web.json_response({'status': 'ok'})
 
 
+def health(request):
+    return web.json_response({'status': 'ok'})
+
+
 def main():
     app = web.Application()
     app['telnyx'] = Telnyx2FApp()
     webhooks = app['webhook-handler'] = WebhookHandler()
     requests = app['request-handler'] = RequestHandler()
 
+    app.router.add_route('POST', '/health', health)
     app.router.add_route('POST', '/event',
                          webhooks.handle_event, name='event')
     app.router.add_route('GET', '/2fa',
