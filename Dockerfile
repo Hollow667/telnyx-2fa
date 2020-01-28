@@ -11,6 +11,6 @@ COPY . /$APP
 RUN pip install -r requirements.txt
 RUN pip install . ./telnyx-python
 
-EXPOSE 80
+EXPOSE 8080
 
 ENTRYPOINT ["./entry.py"]
